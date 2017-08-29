@@ -39,9 +39,6 @@ div.card {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-div.card {
   font-weight: 900;
   font-size: 7rem;
   color: rgb(255,255,255);

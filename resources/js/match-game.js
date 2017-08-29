@@ -67,13 +67,10 @@ $card.click(function() {
  */
 
 MatchGame.flipCard = function($card, $game) {
-    console.log("flipcard");
-    
     var $flippedCards = $game.data('flippedCards');
  	var $gameFlippedCards = $game.data('gameFlippedCards');
     
     if ($card.data('flipped') === true) {
-        console.log ("already flipped")
  		return;
  	}
  		$card.css('background-color', $card.data('color'));
@@ -83,14 +80,24 @@ MatchGame.flipCard = function($card, $game) {
     
     if ($flippedCards.length === 2){
         if ($flippedCards[0].data('value')===$flippedCards[1].data('value')) {
-            $card.css('background-color', "red");
-            $card.css('color', "white");
+            $flippedCards[0].css('background-color',
+            'rgb(153,153,153)').css('color', 'rgb(204,204,204)');
+            $flippedCards[1].css('background-color',
+            'rgb(153,153,153)').css('color', 'rgb(204,204,204)');
         } else {
-            $flippedCards[0].html('').css('background-color', 'rgb(32,64,86)').data('flipped', false);
- 			$flippedCards[1].html('').css('background-color', 'rgb(32,64,86)').data('flipped', false);
- 			$flippedCards.length = 0;    
+            //settimeout can't read flippedCards so do this
+            var $card1 = $flippedCards[0];
+            var $card2 = $flippedCards[1];
+            setTimeout(function () {
+            $card1.html('').css('background-color', 
+            'rgb(32,64,86)').data('flipped', false);
+ 			$card2.html('').css('background-color', 
+            'rgb(32,64,86)').data('flipped', false);
+            }, 450);    
+        
         }
+        $flippedCards.length = 0;
     }
-    
+
 };
 

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid">
       <div class="row">
           <div class="col-md-3 col-xs-12">
               <h1>Match Game</h1>
@@ -17,7 +17,8 @@
                   <p>Click on a card to reveal the number on the other side. Click on a second card to try and find a match to the first. If you succeed, the pair will be removed from play. If not, try again!</p>
                 <h2>How To Win</h2>
                   <p>You win when all pairs have been found.</p>
-          <div class="col-md-9 col xs-12" id="game">
+          </div>
+          <div class="col-md-9 col-xs-12" id="game">
             <div class="col-xs-3 card">1</div>
             <div class="col-xs-3 card">2</div>
             <div class="col-xs-3 card">3</div>
@@ -37,9 +38,8 @@
            </div>
           </div>
         </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
     <script type="text/javascript" src="resources/js/match-game.js"></script>
-  <script type="text/javascript" src="resources/js/tests.js"></script>
+    <script type="text/javascript" src="resources/js/tests.js"></script>
 </body>
 </html>
