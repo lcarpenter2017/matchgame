@@ -33,7 +33,7 @@ MatchGame.generateCardValues = function () {
 
 MatchGame.renderCards = function(cardValues, $game) {
 $game.data('flippedCards', []);
- $game.data('gameFlippedCards',[]);
+$game.data('gameFlippedCards',[]);
  	
  var colArray = [
 'hsl(25, 85%, 65%)',
@@ -48,14 +48,15 @@ $game.data('flippedCards', []);
 
 $game.html('');
 for (var i = 0; i < cardValues.length; i++) {
-	var $card = $('<div class="col-xs-3 card"></div>');
-	$card.data('value', cardValues[i]);
-	$card.data('flipped', false);
-	$card.data('color', colArray[cardValues[i]-1]);
-	$game.append($card);
+var $card = $('<div class="col-xs-3 card"></div>');
+$card.data('value', cardValues[i]);
+$card.data('flipped', false);
+$card.data('color', colArray[cardValues[i]-1]);
+$game.append($card);
 	
-	$card.click(function() {
-		MatchGame.flipCard($(this), $game);
+
+$card.click(function() {
+  MatchGame.flipCard($(this), $game);
 	});
 }
 };
@@ -66,5 +67,30 @@ for (var i = 0; i < cardValues.length; i++) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-
+    console.log("flipcard");
+    
+    var $flippedCards = $game.data('flippedCards');
+ 	var $gameFlippedCards = $game.data('gameFlippedCards');
+    
+    if ($card.data('flipped') === true) {
+        console.log ("already flipped")
+ 		return;
+ 	}
+ 		$card.css('background-color', $card.data('color'));
+ 		$card.append($card.data('value'));
+ 		$card.data('flipped', true);
+ 		$flippedCards.push($card);
+    
+    if ($flippedCards.length === 2){
+        if ($flippedCards[0].data('value')===$flippedCards[1].data('value')) {
+            $card.css('background-color', "red");
+            $card.css('color', "white");
+        } else {
+            $flippedCards[0].html('').css('background-color', 'rgb(32,64,86)').data('flipped', false);
+ 			$flippedCards[1].html('').css('background-color', 'rgb(32,64,86)').data('flipped', false);
+ 			$flippedCards.length = 0;    
+        }
+    }
+    
 };
+
